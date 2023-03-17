@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
+import ToDoForm from "./ToDoForm";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -15,6 +15,8 @@ export default function Home() {
       </Head>
       <main className="text-3xl font-bold underline">
         <h1>GaktooFocussssssssssssssss</h1>
+        <ToDoForm />
+
       </main>
     </>
   );
