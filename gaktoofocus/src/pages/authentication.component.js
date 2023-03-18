@@ -1,0 +1,17 @@
+import React from "react";
+
+import SignUpForm from "../../components/sign-up-form/sign-up-form";
+import SignInForm from "../../components/sign-in-form/sign-in-form";
+
+const Authentication = () => {
+  return (
+    <div>
+      <h1>Sign In Page</h1>
+      <button onClick={logGoogleUser}>Sign in with Google Popup</button>
+      <SignUpForm />
+      <SignInForm />
+    </div>
+  );
+};
+
+export default Authentication;
