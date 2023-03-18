@@ -14,9 +14,9 @@ function ToDoForm() {
 
   return (
     
-    <form onSubmit={handleSubmit}>
-      <label>
-        What:
+    <form onSubmit={handleSubmit} className="relative top-20">
+      <label >
+        <span className="mr-6">What</span>
         <input
           type="text"
           value={toDo}
@@ -24,25 +24,7 @@ function ToDoForm() {
         />
       </label>
       <br />
-      <label>
-        When:
-        <input
-          type="text"
-          value={whenToDo}
-          onChange={(event) => setWhenToDo(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Where:
-        <input
-          type="text"
-          value={whereToDo}
-          onChange={(event) => setWhereToDo(event.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
+      <button type="submit" className="relative top-12">Submit</button>
     </form>
   );
 }

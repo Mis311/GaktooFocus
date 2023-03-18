@@ -7,11 +7,12 @@
   form {
     display: flex;
     flex-direction: column;
+  
   }
   
   label {
     font-weight: bold;
-    margin-top: 1rem;
+    margin-top:1rem;
     color: var(--color-secondary);
   }
   
@@ -42,7 +43,7 @@
 /*  Making of cloud background */
   .clouds {
     position: fixed;
-    top: 0;
+    top: 3rem;
     left: 0;
     width: 100%;
     height: 100%;
