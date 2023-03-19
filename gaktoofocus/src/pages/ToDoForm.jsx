@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CloudBackground from "../../components/CloudBackground";
+import styles from '../styles/ToDoForm.module.css';
 
 function ToDoForm() {
   const [toDo, setToDo] = useState("");
@@ -12,19 +14,24 @@ function ToDoForm() {
   };
 
   return (
-    
-    <form onSubmit={handleSubmit} className="relative top-20">
-      <label >
-        <span className="mr-6">What</span>
-        <input
-          type="text"
-          value={toDo}
-          onChange={(event) => setToDo(event.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit" className="relative top-12">Submit</button>
-    </form>
+    <div className={styles.todoform}>
+      <CloudBackground></CloudBackground>
+
+      <form onSubmit={handleSubmit} className="relative top-20">
+        <label>
+          <span className="mr-6">What</span>
+          <input
+            type="text"
+            value={toDo}
+            onChange={(event) => setToDo(event.target.value)}
+          />
+        </label>
+        <br />
+        <button type="submit" className="relative top-12">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
 
