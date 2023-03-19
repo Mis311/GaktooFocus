@@ -14,9 +14,12 @@ function ToDoForm() {
   };
 
   return (
-    <div className={styles.todoform}>
+    <>
+    <div className={styles.clouds}>
+    
       <CloudBackground></CloudBackground>
-
+    </div>
+    <div className={styles.form}>
       <form onSubmit={handleSubmit} className="relative top-20">
         <label>
           <span className="mr-6">What</span>
@@ -31,7 +34,8 @@ function ToDoForm() {
           Submit
         </button>
       </form>
-    </div>
+     </div>
+    </>
   );
 }
 
