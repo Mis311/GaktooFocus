@@ -5,7 +5,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../src/utils/firebase/firebase.utils";
 
-import FormInput from "../form-input/FormInput";
+import FormInput from "../form-input/form-input-component";
 
 const defaultFormFields = {
   displayName: "",
@@ -40,7 +40,7 @@ const SignUpForm = () => {
         email,
         password
       );
-
+      // so they have a display name when they dont sign up with email and password
       await createUserDocumentFromAuth(user, { displayName });
 
       resetFormFields();
@@ -51,7 +51,6 @@ const SignUpForm = () => {
       console.log("user creation encountered error", error);
     }
   };
-  console.log("hit");
   return (
     <form onSubmit={handleSubmit}>
       <h2>Dont have an account</h2>
