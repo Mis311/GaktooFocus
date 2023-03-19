@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import ToDoForm from "./ToDoForm";
+import CloudBackground from "./CloudBackground";
 
 export default function Home() {
   return (
@@ -15,8 +15,12 @@ export default function Home() {
       </Head>
       <main className="text-3xl text-center">
         <h1 className="font-bold text-6xl">Welcome to GaktooFocus,</h1>
-        <h2 className="mb-24"> Where You Change Your Life By Power of Habits and Friends!</h2>
-      
+        <h2 className="mb-24">
+          {" "}
+          Where You Change Your Life By Power of Habits and Friends!
+        </h2>
+        <ToDoForm />
+        <CloudBackground />
       </main>
     </>
   );
