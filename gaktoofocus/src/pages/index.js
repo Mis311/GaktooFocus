@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import ToDoForm from "./ToDoForm";
-import CloudBackground from "./CloudBackground";
+
 
 export default function Home() {
   return (
@@ -19,8 +18,7 @@ export default function Home() {
           {" "}
           Where You Change Your Life By Power of Habits and Friends!
         </h2>
-        <ToDoForm />
-        <CloudBackground />
+     
       </main>
     </>
   );
