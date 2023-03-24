@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import CloudBackground from "../../components/CloudBackground";
 import MotivationBall from "../../components/motivation-ball/MotivationBall";
 import ToDoList from "../../components/to-do-list/ToDoList";
 import Timer from "../../components/Timer/SessionTimer";
 import UserStatus from "../../components/UserStatus";
 import SocialMedia from "../../components/social-media-links/SocialMedia";
+import WhatToDo from "../../components/user-profile/WhatToDo";
 function ToDoForm() {
-  const [toDo, setToDo] = useState("");
+ 
   const [whenToDo, setWhenToDo] = useState("");
   const [whereToDo, setWhereToDo] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle the form submission
-    console.log(toDo, whenToDo, whereToDo);
-  };
+ 
   // Fake user status data
   const friendStatus = true;
   const onlineStatus = true;
@@ -31,22 +27,9 @@ function ToDoForm() {
 
   return (
     <>
-      <CloudBackground></CloudBackground>
+      
       <Timer />
-      <form onSubmit={handleSubmit} className="relative top-20">
-        <label>
-          <span className="mr-6">What</span>
-          <input
-            type="text"
-            value={toDo}
-            onChange={(event) => setToDo(event.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit" className="relative top-12">
-          Submit
-        </button>
-      </form>
+
       <div className="form">
         <ToDoList />
       </div>
@@ -60,6 +43,7 @@ function ToDoForm() {
         
       </div>
     <MotivationBall />
+    <WhatToDo />
     <SocialMedia />
     </>
   );
