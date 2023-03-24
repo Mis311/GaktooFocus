@@ -4,6 +4,7 @@ import MotivationBall from "../../components/motivation-ball/MotivationBall";
 import ToDoList from "../../components/to-do-list/ToDoList";
 import Timer from "../../components/Timer/SessionTimer";
 import UserStatus from "../../components/UserStatus";
+import SocialMedia from "../../components/social-media-links/SocialMedia";
 function ToDoForm() {
   const [toDo, setToDo] = useState("");
   const [whenToDo, setWhenToDo] = useState("");
@@ -47,13 +48,17 @@ function ToDoForm() {
       <div className="form">
         <ToDoList />
       </div>
-      <MotivationBall />
+     
 
       <div className="fixed bottom-0 left-0 w-full flex items-end">
         <div className="bg-white p-4 rounded-lg shadow-md mx-4 lg:mx-8 xl:mx-12">
           <UserStatus userId={userId} />
+         
         </div>
+        
       </div>
+    <MotivationBall />
+    <SocialMedia />
     </>
   );
 }

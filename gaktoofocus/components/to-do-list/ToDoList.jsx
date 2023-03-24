@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SessionTimer from "../Timer/SessionTimer"
 import BackgroundSelector from './BackgroundSelector';
+
 function TodoList() {
   const [notes, setNotes] = useState([
     { id: uuidv4(), title: "Buy groceries", category: "Others" },
