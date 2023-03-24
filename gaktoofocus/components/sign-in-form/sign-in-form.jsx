@@ -28,7 +28,7 @@ const SignInForm = () => {
 
     try {
       const response = signInAAuthUserWithEmailAndPassword(email, password);
-      resetFormFields();
+      setFormFields();
     } catch (error) {}
   };
   const resetFormFields = () => {
@@ -37,11 +37,12 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
+    console.log(`I am the user ${user}`);
   };
 
   return (
     <div>
-      <h1>sign up with your email and password</h1>
+      <h1>sign in with your email and password</h1>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="email"
