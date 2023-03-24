@@ -42,7 +42,6 @@ function ToDoForm() {
         
       </div>
     <MotivationBall />
-    <WhatToDo />
     <SocialMedia />
     </>
   );
