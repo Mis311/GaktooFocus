@@ -8,10 +8,10 @@ const WhatToDo = () => {
       };
       const [toDo, setToDo] = useState("");
   return (
-    <div className="bg-blue-500 rounded-lg shadow-md flex cl-2">
+    <div className="box-border justify-center flex">
       <form onSubmit={handleSubmit} className="relative top-20 ">
         <label>
-          <span className="mr-6 ">What</span>
+          <span className="ml-6 bg-blue-500 rounded-lg shadow-md">What</span>
           <input
             type="text"
             value={toDo}
