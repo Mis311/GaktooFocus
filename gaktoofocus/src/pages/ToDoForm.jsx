@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MotivationBall from "../../components/motivation-ball/MotivationBall";
 import ToDoList from "../../components/to-do-list/ToDoList";
-import Timer from "../../components/Timer/SessionTimer";
+import ToDoHeader from "../../components/to-do-list/ToDoHeader";
 import UserStatus from "../../components/UserStatus";
 import SocialMedia from "../../components/social-media-links/SocialMedia";
 import WhatToDo from "../../components/user-profile/WhatToDo";
@@ -27,8 +27,7 @@ function ToDoForm() {
 
   return (
     <>
-      
-      <Timer />
+     <ToDoHeader />
 
       <div className="form">
         <ToDoList />

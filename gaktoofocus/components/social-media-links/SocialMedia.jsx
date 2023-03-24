@@ -2,10 +2,11 @@ import React from "react";
 
 const SocialMedia = () => {
   return (
-    <ul>
-      <></>
+    <ul className="flex justify-end">
+      <div className="flex row">
       <li>Tiktok</li>
       <li>Discord</li>
+      </div>
     </ul>
   );
 };

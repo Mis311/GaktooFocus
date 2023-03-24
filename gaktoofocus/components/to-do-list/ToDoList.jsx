@@ -44,7 +44,7 @@ function TodoList() {
 
   
   return (
-    <div className="container w-56 my-8">
+    <div className="container w-120 my-8 flex">
       <h1 className="text-3xl font-semibold mb-4">To-Do List</h1>
       <div className="my-4">
         <input className="border-2 rounded-lg px-4 py-2 mr-4" type="text" placeholder="Enter note title" value={newNoteTitle} onChange={handleTitleChange} />
