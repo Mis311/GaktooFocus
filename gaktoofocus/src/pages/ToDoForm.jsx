@@ -6,6 +6,9 @@ import UserStatus from "../../components/UserStatus";
 import SocialMedia from "../../components/social-media-links/SocialMedia";
 import WhatToDo from "../../components/user-profile/WhatToDo";
 import Timer from "../../components/Timer/SessionTimer";
+import TotalSessions from "../../components/TotalSessions";
+import ProductivityLevel from "../../components/UserSessionsData/ProductivityLevel";
+import DailyGroupRanking from "../../components/Rankings/DailyGroupRanking";
 function ToDoForm() {
   const [whenToDo, setWhenToDo] = useState("");
   const [whereToDo, setWhereToDo] = useState("");
@@ -39,7 +42,11 @@ function ToDoForm() {
       </div>
       <div className="col-span-1">
         <UserStatus userId={userId} />
+        <TotalSessions />
+        <ProductivityLevel />
+        <DailyGroupRanking />
       </div>
+      
     </main>
     </header>
   );
