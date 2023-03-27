@@ -2,33 +2,33 @@ import React from 'react';
 
 const ToDoHeader = () => {
   return (
-    <header className="bg-white border-b border-gray-200 fixed top-0 inset-x-0 z-100">
+    <header className="bg-indigo-700 border-b border-gray-200 fixed top-0 inset-x-0 z-100">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <img
-                className="block h-8 w-auto"
-                src="/logo.svg"
+                className="h-12 w-auto mb-2"
+                src="/gaktoo-logo-transparent2.png"
                 alt="Logo"
               />
             </div>
             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
               <a
                 href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
+                className="border-transparent text-gray-50 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
               >
                 Dashboard
               </a>
               <a
                 href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
+                className="border-transparent text-gray-50 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
               >
                 Projects
               </a>
               <a
                 href="#"
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
+                className="border-transparent text-gray-50 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
               >
                 Team
               </a>
