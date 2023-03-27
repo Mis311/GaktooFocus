@@ -26,21 +26,18 @@ function ToDoForm() {
       <div className="">
         <ToDoHeader />
         <MotivationBall />
-        <SocialMedia />
+    
       </div>
-      <div className="w-full flex flex-col items-start col-span-2">
-        <div className="bg-white p-4 rounded-lg shadow-md mx-4 lg:mx-8 xl:mx-12">
-          <UserStatus userId={userId} />
-        </div>
-        <div className="form flex items-start ">
+      <div className="w-auto flex flex-col items-start col-span-2">
+        <div className="bg-white p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">
           <ToDoList />
+        </div>
+        <div className="flex-col  col-span-2">
+          
         </div>
       </div>
       <div className="col-span-1">
-        xD Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
-        doloribus provident iure, adipisci qui porro dicta vitae omnis placeat
-        officia praesentium magni quo sint dolorem possimus quod nihil ducimus
-        id.
+        <UserStatus userId={userId} />
       </div>
     </div>
   );

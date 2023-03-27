@@ -42,8 +42,8 @@ function TodoList() {
   };
 
   return (
-    <div className="container w-120 my-8 flex">
-      <div className="my-4">
+    <div className="container w-3/5 my-8 flex-col">
+      <div className="my-4 flex-col">
         <h1 className="text-3xl font-semibold mb-4">To-Do List</h1>
         <input
           className="border-2 rounded-lg px-4 py-2 mr-4"
@@ -53,7 +53,7 @@ function TodoList() {
           onChange={handleTitleChange}
         />
         <select
-          className="border-2 rounded-lg px-4 py-2"
+          className="border-2 rounded-lg px-4 py-2 "
           value={newNoteCategory}
           onChange={handleCategoryChange}
         >
@@ -69,9 +69,9 @@ function TodoList() {
           Add Note
         </button>
       </div>
-      <div className="flex-col">
-        <div className="my-4">
-          <h2 className="text-xl font-semibold mb-2">Today's To-Do List</h2>
+      <div className="flex">
+        <div className="my-4 flex-col">
+          <h2 className="text-xl font-semibold mb-2 ">Today's To-Do List</h2>
 
           {todayNotes.length === 0 && <p>No notes for today yet.</p>}
           {todayNotes.map((note) => (
@@ -103,12 +103,12 @@ function TodoList() {
         <BackgroundSelector />
         {/* <SessionTimer /> */}
       </div>
-      <div className="my-4">
+      <div className="my-4 box-border">
         <h2 className="text-xl font-semibold mb-2">All To-Do List</h2>
         {notes.length === 0 && <p>No notes to display.</p>}
         {notes.map((note) => (
           <div
-            className={`border-2 rounded-md p-2 mb-2 ${
+            className={`border-2 rounded-md p-2 mb-2 bg-white float-left w-56 m-3 ${
               note.category === "Health"
                 ? "border-red-500"
                 : note.category === "Project"
