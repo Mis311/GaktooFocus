@@ -42,7 +42,7 @@ function TodoList() {
   };
 
   return (
-    <div className="container w-3/5 my-8 flex-col">
+    <div className="container  my-8 flex-col">
       <div className="my-4 flex-col">
         <h1 className="text-3xl font-semibold mb-4">To-Do List</h1>
         <input

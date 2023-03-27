@@ -19,7 +19,7 @@ const MotivationBall = () => {
 
   return (
     <div
-      className="border border-blue-500 p-2 rounded-full w-max"
+      className="border border-blue-500 p-2 rounded-full w-32 mt-6" 
       onClick={getRandomTip}
     >
       <button className="bg-yellow-400 rounded-full p-3">

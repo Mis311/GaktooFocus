@@ -5,6 +5,7 @@ import ToDoHeader from "../../components/to-do-list/ToDoHeader";
 import UserStatus from "../../components/UserStatus";
 import SocialMedia from "../../components/social-media-links/SocialMedia";
 import WhatToDo from "../../components/user-profile/WhatToDo";
+import Timer from "../../components/Timer/SessionTimer";
 function ToDoForm() {
   const [whenToDo, setWhenToDo] = useState("");
   const [whereToDo, setWhereToDo] = useState("");
@@ -22,24 +23,25 @@ function ToDoForm() {
   const userId = "123"; // Replace with an actual user ID
 
   return (
-    <div className="grid grid-cols-3 gap-1 m-10">
-      <div className="">
-        <ToDoHeader />
+    <header>   
+    <ToDoHeader />
+    <main className="gap-1 m-10 flex h-fit items-start py-16">
+      <div className="flex-col ">
+       
+        <Timer /> 
         <MotivationBall />
-    
       </div>
-      <div className="w-auto flex flex-col items-start col-span-2">
-        <div className="bg-white p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">
+      <div className="w-auto flex flex-row items-start">
+        <div className="bg-white bg-opacity-75 p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">
           <ToDoList />
         </div>
-        <div className="flex-col  col-span-2">
-          
-        </div>
+        <div className="flex-col  col-span-2"></div>
       </div>
       <div className="col-span-1">
         <UserStatus userId={userId} />
       </div>
-    </div>
+    </main>
+    </header>
   );
 }
 
