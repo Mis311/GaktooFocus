@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Timer from "./SessionTimer";
 
 const MeditationTimer = () => {
   const [selectedTime, setSelectedTime] = useState(3 * 60);
@@ -39,10 +40,10 @@ const MeditationTimer = () => {
     // royal free meditation music later
   }
 
-
+let TimerName="Meditation"
   return (
     <div>
-      <h2>Meditation Timer</h2>
+      <h2>{TimerName} Timer</h2>
       <div>
         <button
           onClick={() => startTimer(3)}
