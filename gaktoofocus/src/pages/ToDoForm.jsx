@@ -8,6 +8,7 @@ import WhatToDo from "../../components/user-profile/WhatToDo";
 import Timer from "../../components/Timer/SessionTimer";
 import TotalSessions from "../../components/TotalSessions";
 import ProductivityLevel from "../../components/UserSessionsData/ProductivityLevel";
+import MeditationTimer from "../../components/Timer/MeditationTimer";
 
 function ToDoForm() {
   const [whenToDo, setWhenToDo] = useState("");
@@ -33,6 +34,7 @@ function ToDoForm() {
        
         <Timer /> 
         <MotivationBall />
+        <MeditationTimer />
       </div>
       <div className="w-auto flex flex-row items-start">
         <div className="bg-white bg-opacity-75 p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import SessionTimer from "../Timer/SessionTimer";
-import BackgroundSelector from "./BackgroundSelector";
 
 function TodoList() {
   const [notes, setNotes] = useState([
@@ -11,15 +9,38 @@ function TodoList() {
     { id: uuidv4(), title: "Study programming", category: "Programming" },
   ]);
 
-  const [todayNotes, setTodayNotes] = useState([]);
-
   const [newNoteTitle, setNewNoteTitle] = useState("");
   const [newNoteCategory, setNewNoteCategory] = useState("Others");
 
-  const handleMoveToToday = (id) => {
-    const note = notes.find((note) => note.id === id);
-    setTodayNotes([...todayNotes, note]);
-    setNotes(notes.filter((note) => note.id !== id));
+  const [editedCategoryName, setEditedCategoryName] = useState("");
+
+  const [categories, setCategories] = useState([
+    { name: "Health", borderColor: "border-red-500", isEditing: false },
+    { name: "Project", borderColor: "border-purple-500", isEditing: false },
+    {
+      name: "Programming",
+      borderColor: "border-green-500",
+      isEditing: false,
+    },
+    { name: "Others", borderColor: "border-gray-500", isEditing: false },
+  ]);
+
+  const handleCategoryNameChange = (e, index) => {
+    setEditedCategoryName(e.target.value);
+
+    setCategories((prevCategories) => {
+      const updatedCategories = [...prevCategories];
+      updatedCategories[index].name = e.target.value;
+      return updatedCategories;
+    });
+  };
+
+  const handleEditCategoryName = (index) => {
+    setCategories((prevCategories) => {
+      const updatedCategories = [...prevCategories];
+      updatedCategories[index].isEditing = !updatedCategories[index].isEditing;
+      return updatedCategories;
+    });
   };
 
   const handleAddNote = () => {
@@ -41,93 +62,73 @@ function TodoList() {
     setNewNoteCategory(e.target.value);
   };
 
+  const renderNotesForCategory = (category, borderColor) => {
+    return notes
+      .filter((note) => note.category === category)
+      .map((note) => (
+        <div
+          key={note.id}
+          className={`border-2 rounded-md p-2 mb-2 bg-white ${borderColor}`}
+        >
+          <div className="flex justify-between items-center mb-2">
+            <div className="my-2">{note.title}</div>
+          </div>
+          <div className="text-sm font-medium">{note.category}</div>
+        </div>
+      ));
+  };
+
   return (
-    <div className="container  my-8 flex-col">
-      <div className="my-4 flex-col">
+    <div className="container mx-auto my-8">
+      <div className="my-4">
         <h1 className="text-3xl font-semibold mb-4">To-Do List</h1>
         <input
-          className="border-2 rounded-lg px-4 py-2 mr-4"
-          type="text"
-          placeholder="Enter note title"
+          className="border-2 rounded-md p-1 w-96"
+          placeholder="New note title"
           value={newNoteTitle}
           onChange={handleTitleChange}
         />
         <select
-          className="border-2 rounded-lg px-4 py-2 "
+          className="border-2 rounded-md p-1 ml-2"
           value={newNoteCategory}
           onChange={handleCategoryChange}
         >
-          <option value="Health">Health</option>
-          <option value="Project">Project</option>
-          <option value="Programming">Programming</option>
-          <option value="Others">Others</option>
+                  {categories.map((category, index) => (
+            <option key={index} value={category.name}>
+              {category.name}
+            </option>
+          ))}
         </select>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4"
+          className="bg-blue-500 text-white p-2 ml-2 rounded-md"
           onClick={handleAddNote}
         >
           Add Note
         </button>
       </div>
-      <div className="flex">
-        <div className="my-4 flex-col">
-          <h2 className="text-xl font-semibold mb-2 ">Today's To-Do List</h2>
 
-          {todayNotes.length === 0 && <p>No notes for today yet.</p>}
-          {todayNotes.map((note) => (
-            <div
-              className={`flex rounded-md border-2 p-2 mb-2 ${
-                note.category === "Health"
-                  ? "border-red-500"
-                  : note.category === "Project"
-                  ? "border-purple-500"
-                  : note.category === "Programming"
-                  ? "border-green-500"
-                  : "border-gray-500"
-              }`}
-            >
-              <div className="flex-left  justify-between items-center mb-2">
-                <div className="my-2">{note.title}</div>
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                  onClick={() => setNotes([...notes, note])}
-                >
-                  Move back to All
-                </button>
-              </div>
-              <div className="text-sm font-medium">{note.category}</div>
-            </div>
-          ))}
-        </div>
-
-        <BackgroundSelector />
-        {/* <SessionTimer /> */}
-      </div>
-      <div className="my-4 box-border">
-        <h2 className="text-xl font-semibold mb-2">All To-Do List</h2>
-        {notes.length === 0 && <p>No notes to display.</p>}
-        {notes.map((note) => (
-          <div
-            className={`border-2 rounded-md p-2 mb-2 bg-white float-left w-56 m-3 ${
-              note.category === "Health"
-                ? "border-red-500"
-                : note.category === "Project"
-                ? "border-purple-500"
-                : note.category === "Programming"
-                ? "border-green-500"
-                : "border-gray-500"
-            }`}
-          >
-            <div className="flex justify-between items-center mb-2">
-              <div className="my-2">{note.title}</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {categories.map((category, index) => (
+          <div key={index} className="bg-gray-100 p-4 rounded-md">
+            <div className="flex justify-between items-center">
+              {category.isEditing ? (
+                <input
+                  className="border-2 rounded-md p-1"
+                  type="text"
+                  value={editedCategoryName}
+                  onChange={(e) => handleCategoryNameChange(e, index)}
+                />
+              ) : (
+                <div className="text-xl font-semibold">{category.name}</div>
+              )}
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                onClick={() => handleMoveToToday(note.id)}
+                className="bg-blue-500 text-white p-1 rounded-md"
+                onClick={() => handleEditCategoryName(index)}
               >
-                Move to Today
+                {category.isEditing ? "Save" : "Edit"}
               </button>
             </div>
-            <div className="text-sm font-medium">{note.category}</div>
+            {renderNotesForCategory(category.name, category.borderColor)}
           </div>
         ))}
       </div>
