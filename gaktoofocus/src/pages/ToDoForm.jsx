@@ -11,10 +11,14 @@ import ProductivityLevel from "../../components/UserSessionsData/ProductivityLev
 import MeditationTimer from "../../components/Timer/MeditationTimer";
 import RankingBar from "../../components/RankingBar";
 import UserBio from "../../components/user-profile/UserBio";
+import ToDoTimer from "../../components/Timer/ToDoTimer"
+
+
+
 function ToDoForm() {
   const [whenToDo, setWhenToDo] = useState("");
   const [whereToDo, setWhereToDo] = useState("");
-
+  const [taskDurations, setTaskDurations] = useState({});
   // Fake user status data
   const friendStatus = true;
   const onlineStatus = true;
@@ -40,6 +44,7 @@ function ToDoForm() {
       <ToDoHeader />
       <main className="gap-1 m-10 flex h-fit items-start py-16">
         <div className="flex-col ">
+          <ToDoTimer taskDurations={taskDurations} setTaskDurations={setTaskDurations} />
           <Timer />
           <MotivationBall />
           <MeditationTimer />

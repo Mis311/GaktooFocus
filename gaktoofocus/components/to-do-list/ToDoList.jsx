@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+
 function TodoList() {
+  const [taskDurations, setTaskDurations] = useState({});
   const [notes, setNotes] = useState([
     {
       id: uuidv4(),
@@ -143,6 +145,7 @@ function TodoList() {
               checked={note.isSelected}
               onChange={() => toggleSelectedNote(note.id)}
             />
+            
             <div className="my-2">{note.title}</div>
           </div>
           <div className="text-sm font-medium">{note.category}</div>
