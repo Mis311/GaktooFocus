@@ -3,11 +3,11 @@ import Link from "next/link";
 const ToDoHeader = () => {
   return (
     <header className="bg-indigo-700 border-b border-gray-200 fixed top-0 inset-x-0 z-100">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <nav className="mx-auto mx-8 sm:mx-8 lg:mx-12 flex justify-between items-center h-16">
         <div className="flex-shrink-0">
         <Link href="ToDoForm">
           <img
-            className="h-12 w-auto mb-2 float-left content-start"
+            className="h-12 w-auto mb-2 flex"
             src="/gaktoo-logo-transparent2.png"
             alt="Logo"
           />

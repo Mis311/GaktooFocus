@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const UserStatus = ({ userId }) => {
+const UserBio = ({ userId }) => {
   const [liked, setLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -54,15 +54,35 @@ const UserStatus = ({ userId }) => {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
-      <p>{dateString}'s Todolist</p>
-      {todoList ? (
-        <ul className="list-disc ml-4">
-          {todoList.map((item) => (
-            <li key={item.id}>{item.text}</li>
-          ))}
-        </ul>
-      ) : (
-        <div className="text-gray-500">Loading to-do list...</div>
+      <p>
+        Future Bio: I am a professional programmer & Entrepreneur that's worth
+        $300/hour
+      </p>
+      {friendStatus && (onlineStatus || checkedInStatus) && (
+        <>
+          {onlineStatus && (
+            <div className="flex items-center">
+              <span className="bg-green-500 w-2 h-2 rounded-full mr-2"></span>
+              <span className="text-gray-700 font-medium">Online</span>
+            </div>
+          )}
+
+          {checkedInStatus && (
+            <>
+              <div className="text-gray-700 font-medium">Checked in</div>
+              <br></br><p>{dateString}'s Todolist</p>
+              {todoList ? (
+                <ul className="list-disc ml-4">
+                  {todoList.map((item) => (
+                    <li key={item.id}>{item.text}</li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="text-gray-500">Loading to-do list...</div>
+              )}
+            </>
+          )}
+        </>
       )}
 
       <div className="flex items-center">
@@ -81,4 +101,4 @@ const UserStatus = ({ userId }) => {
   );
 };
 
-export default UserStatus;
+export default UserBio;

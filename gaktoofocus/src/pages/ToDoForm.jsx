@@ -10,6 +10,7 @@ import TotalSessions from "../../components/TotalSessions";
 import ProductivityLevel from "../../components/UserSessionsData/ProductivityLevel";
 import MeditationTimer from "../../components/Timer/MeditationTimer";
 import RankingBar from "../../components/RankingBar";
+import UserBio from "../../components/user-profile/UserBio";
 function ToDoForm() {
   const [whenToDo, setWhenToDo] = useState("");
   const [whereToDo, setWhereToDo] = useState("");
@@ -45,6 +46,7 @@ function ToDoForm() {
         </div>
         <div className="w-auto flex flex-row items-start">
           <div className="bg-white bg-opacity-75 p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">
+            <UserBio />
             <ToDoList />
           </div>
           <div className="flex-col  col-span-2"></div>
