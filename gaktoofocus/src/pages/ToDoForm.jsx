@@ -9,7 +9,7 @@ import Timer from "../../components/Timer/SessionTimer";
 import TotalSessions from "../../components/TotalSessions";
 import ProductivityLevel from "../../components/UserSessionsData/ProductivityLevel";
 import MeditationTimer from "../../components/Timer/MeditationTimer";
-
+import RankingBar from "../../components/RankingBar";
 function ToDoForm() {
   const [whenToDo, setWhenToDo] = useState("");
   const [whereToDo, setWhereToDo] = useState("");
@@ -26,30 +26,38 @@ function ToDoForm() {
 
   const userId = "123"; // Replace with an actual user ID
 
+  //Fake user date for ranking
+  const activeUsers = [
+    { id: 1, name: "User1", category: "friend", points: 100 },
+    { id: 2, name: "User2", category: "regional", points: 200 },
+    { id: 3, name: "User3", category: "friend", points: 150 },
+    { id: 4, name: "User4", category: "regional", points: 250 },
+  ];
+
   return (
-    <header>   
-    <ToDoHeader />
-    <main className="gap-1 m-10 flex h-fit items-start py-16">
-      <div className="flex-col ">
-       
-        <Timer /> 
-        <MotivationBall />
-        <MeditationTimer />
-      </div>
-      <div className="w-auto flex flex-row items-start">
-        <div className="bg-white bg-opacity-75 p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">
-          <ToDoList />
+    <header>
+      <ToDoHeader />
+      <main className="gap-1 m-10 flex h-fit items-start py-16">
+        <div className="flex-col ">
+          <Timer />
+          <MotivationBall />
+          <MeditationTimer />
         </div>
-        <div className="flex-col  col-span-2"></div>
-      </div>
-      <div className="col-span-1">
-        <UserStatus userId={userId} />
-        <TotalSessions />
-        <ProductivityLevel />
-    
-      </div>
-      
-    </main>
+        <div className="w-auto flex flex-row items-start">
+          <div className="bg-white bg-opacity-75 p-4 rounded-lg shadow-md  lg:mx-8 xl:mx-12">
+            <ToDoList />
+          </div>
+          <div className="flex-col  col-span-2"></div>
+        </div>
+        <div className="col-span-1">
+          <UserStatus userId={userId} />
+          <div className="flex">
+            <TotalSessions />
+            <ProductivityLevel />
+          </div>
+          <RankingBar activeUsers={activeUsers} />
+        </div>
+      </main>
     </header>
   );
 }

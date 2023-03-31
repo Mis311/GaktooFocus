@@ -3,16 +3,58 @@ import { v4 as uuidv4 } from "uuid";
 
 function TodoList() {
   const [notes, setNotes] = useState([
-    { id: uuidv4(), title: "Buy groceries", category: "Others" },
-    { id: uuidv4(), title: "Go for a run", category: "Health" },
-    { id: uuidv4(), title: "Work on project", category: "Project" },
-    { id: uuidv4(), title: "Study programming", category: "Programming" },
+    {
+      id: uuidv4(),
+      title: "Buy groceries",
+      category: "Others",
+      isSelected: false,
+      isCompleted: false,
+    },
+    {
+      id: uuidv4(),
+      title: "Go for a run",
+      category: "Health",
+      isSelected: false,
+      isCompleted: false,
+    },
+    {
+      id: uuidv4(),
+      title: "Work on project",
+      category: "Project",
+      isSelected: false,
+      isCompleted: false,
+    },
+    {
+      id: uuidv4(),
+      title: "Study programming",
+      category: "Programming",
+      isSelected: false,
+      isCompleted: false,
+    },
   ]);
+
+  const toggleSelectedNote = (id) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === id ? { ...note, isSelected: !note.isSelected } : note
+      )
+    );
+  };
+
+  const toggleCompletedNote = (id) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === id ? { ...note, isCompleted: !note.isCompleted } : note
+      )
+    );
+  };
+
+  const deleteNote = (id) => {
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+  };
 
   const [newNoteTitle, setNewNoteTitle] = useState("");
   const [newNoteCategory, setNewNoteCategory] = useState("Others");
-
-  const [editedCategoryName, setEditedCategoryName] = useState("");
 
   const [categories, setCategories] = useState([
     { name: "Health", borderColor: "border-red-500", isEditing: false },
@@ -26,11 +68,11 @@ function TodoList() {
   ]);
 
   const handleCategoryNameChange = (e, index) => {
-    setEditedCategoryName(e.target.value);
+    const newValue = e.target.value;
 
     setCategories((prevCategories) => {
       const updatedCategories = [...prevCategories];
-      updatedCategories[index].name = e.target.value;
+      updatedCategories[index].editedName = newValue;
       return updatedCategories;
     });
   };
@@ -38,10 +80,28 @@ function TodoList() {
   const handleEditCategoryName = (index) => {
     setCategories((prevCategories) => {
       const updatedCategories = [...prevCategories];
-      updatedCategories[index].isEditing = !updatedCategories[index].isEditing;
+      const currentCategory = updatedCategories[index];
+  
+      if (currentCategory.isEditing && currentCategory.editedName) {
+        const oldName = currentCategory.name;
+        const newName = currentCategory.editedName;
+  
+        currentCategory.name = newName;
+        currentCategory.editedName = "";
+  
+        // Update the notes with the new category name
+        setNotes((prevNotes) =>
+          prevNotes.map((note) =>
+            note.category === oldName ? { ...note, category: newName } : note
+          )
+        );
+      }
+  
+      currentCategory.isEditing = !currentCategory.isEditing;
       return updatedCategories;
     });
   };
+  
 
   const handleAddNote = () => {
     const newNote = {
@@ -68,12 +128,32 @@ function TodoList() {
       .map((note) => (
         <div
           key={note.id}
-          className={`border-2 rounded-md p-2 mb-2 bg-white ${borderColor}`}
+          className={`border-2 rounded-md p-2 mb-2 bg-white ${borderColor} relative`}
         >
+          <button
+            className="absolute top-0 right-0 bg-gray-500 text-white p-1 rounded-bl-md"
+            onClick={() => deleteNote(note.id)}
+          >
+            X
+          </button>
           <div className="flex justify-between items-center mb-2">
+            <input
+              type="checkbox"
+              className="mr-2"
+              checked={note.isSelected}
+              onChange={() => toggleSelectedNote(note.id)}
+            />
             <div className="my-2">{note.title}</div>
           </div>
           <div className="text-sm font-medium">{note.category}</div>
+          <button
+            className={`p-1 ml-2 rounded-md ${
+              note.isCompleted ? "bg-green-500" : "bg-gray-400"
+            }`}
+            onClick={() => toggleCompletedNote(note.id)}
+          >
+            {note.isCompleted ? "Archived" : "Archive"}
+          </button>
         </div>
       ));
   };
@@ -93,7 +173,7 @@ function TodoList() {
           value={newNoteCategory}
           onChange={handleCategoryChange}
         >
-                  {categories.map((category, index) => (
+          {categories.map((category, index) => (
             <option key={index} value={category.name}>
               {category.name}
             </option>
@@ -115,7 +195,7 @@ function TodoList() {
                 <input
                   className="border-2 rounded-md p-1"
                   type="text"
-                  value={editedCategoryName}
+                  value={category.editedName || ""}
                   onChange={(e) => handleCategoryNameChange(e, index)}
                 />
               ) : (

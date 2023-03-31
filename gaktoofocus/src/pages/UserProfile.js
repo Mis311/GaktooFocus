@@ -1,5 +1,5 @@
 import React from "react";
-
+import ToDoHeader from "../../components/to-do-list/ToDoHeader";
 function UserProfile() {
   const user = {
     name: "John Doe",
@@ -11,8 +11,10 @@ function UserProfile() {
   };
 
   return (
+    <> <ToDoHeader />
     <div className="container mx-auto my-8">
-      <div className="flex flex-col md:flex-row items-center justify-center">
+   
+      <div className="flex flex-col md:flex-row items-center justify-center  mt-20">
         <img
           className="w-32 h-32 md:w-48 md:h-48 rounded-full mx-auto md:mx-0 md:mr-6"
           src={user.avatar}
@@ -29,7 +31,7 @@ function UserProfile() {
             <span className="font-semibold">Joined:</span> {user.joined}
           </p>
         </div>
-        <div className="my-8">
+        <div classNamee="my-8">
           <h2 className="text-2xl font-semibold">Stats</h2>
           <div className="border-t-2 border-gray-300 mt-4"></div>
           <div className="flex my-4">
@@ -72,6 +74,7 @@ function UserProfile() {
       </div>
       );
     </div>
+    </>
   );
 }
 
