@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import mongoose from "mongoose";
+
+// db
+mongoose.connect(pro)
 
 
 export default function Home() {
