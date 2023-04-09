@@ -42,7 +42,7 @@ const ToDoHeader = () => {
           >
             Focus Session
           </button>
-          <Link href="#">
+          <Link href="https://discord.gg/ZjYSsv5U">
             <img
               src="/discord-icon.png"
               className="h-16 w-auto px-4 py-2"

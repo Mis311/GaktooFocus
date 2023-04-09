@@ -29,7 +29,7 @@ export default function Teams() {
           resistance and truly commit to our goals.
         </p>
         <div className="my-8 text-center">
-          <Link href="https://discord.com/invite/your-invite-link"
+          <Link href="https://discord.gg/ZjYSsv5U"
               className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300"
               target="_blank"
               rel="noopener noreferrer"
