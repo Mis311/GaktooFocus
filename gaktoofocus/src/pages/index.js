@@ -2,10 +2,33 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import mongoose from "mongoose";
+require("dotenv").config();
 
 // db
-mongoose.connect(pro)
+async function connectDB() {
+  await mongoose.connect(process.env.MONGO_URL);
 
+  console.log("Connected to DB")
+
+  // schemas
+  const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String,
+    avatar: String,
+    bio: String,
+    location: String,
+    joined: String,
+    todos: Array,
+    account_status: String, // example: "admin"
+    points: Number,
+    total_sessions: Number,
+    reported_distractions: Array,
+  });
+
+  // models
+  const User = new mongoose.model("User", userSchema);
+}
 
 export default function Home() {
   return (
@@ -22,7 +45,6 @@ export default function Home() {
           {" "}
           Where You Change Your Life By Power of Habits and Friends!
         </h2>
-     
       </main>
     </>
   );
